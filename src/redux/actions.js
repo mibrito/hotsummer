@@ -16,14 +16,18 @@ export const doClick = value => {
 
 export const fetchTemp = function(id) {
   return async (dispatch, getState) => {
-    console.log('fetch')
     dispatch(begin(id))
     try {
+      console.log('fetch')
       const response = await axios({
         url: `${ROUTE}/${id}`,
-        method: 'get',
+        mode: 'no-cors',
         headers: {
-          'Access-Control-Allow-Origin': '*'
+          // 'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+          'Accept-Language':	'en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7',
+          'Origin': undefined
         }
       })
 
